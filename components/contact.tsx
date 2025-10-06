@@ -197,9 +197,9 @@ export function Contact() {
                   <div>
                     <h3 className="font-bold mb-1 text-card-foreground">Oficina</h3>
                     <p className="text-muted-foreground">
-                      Casa de Jampi
+                      Huancayo
                       <br />
-                      con un vinito
+                      Perú
                     </p>
                   </div>
                 </div>

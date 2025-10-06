@@ -51,7 +51,7 @@ export function Hero() {
 
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
+              <div className="text-4xl font-bold text-primary mb-2">25+</div>
               <div className="text-muted-foreground">Proyectos Completados</div>
             </div>
             <div>
@@ -59,7 +59,7 @@ export function Hero() {
               <div className="text-muted-foreground">Satisfacción Cliente</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">10+</div>
+              <div className="text-4xl font-bold text-primary mb-2">5+</div>
               <div className="text-muted-foreground">Años Experiencia</div>
             </div>
             <div>

@@ -4,6 +4,34 @@ import { ExternalLink } from "lucide-react"
 
 const projects = [
   {
+    title: "Sistema de la Botica Said",
+    description: "Software para gestión de ventas, inventario y reportes.",
+    image: "/boticaSaid.jpeg",
+    tags: ["React", "Next.js", "Spring Boot"],
+    category: "Salud",
+  },
+  {
+    title: "CRM Empresarial",
+    description: "Sistema de gestión de relaciones con clientes y automatización de ventas.",
+    image: "/crm-dashboard-analytics.jpg",
+    tags: ["React", "Django", "Redis"],
+    category: "Empresarial",
+  },
+  {
+    title: "Panadería Delicia",
+    description: "Software a medida creado para la Panaderia Delicia.",
+    image: "/PanaderiaDelicia.jpeg",
+    tags: ["React", "Next.js", "Spring Boot"],
+    category: "Postre",
+  },
+  {
+    title: "Sistema de Planillas DREJ",
+    description: "Gestion de boleta personales admninistrativas de la DREJ.",
+    image: "/PlanillasDrej.png",
+    tags: ["Laravel", "Angular", "PostgreSQL"],
+    category: "Empresarial",
+  },
+  {
     title: "Sistema de Gestión Hospitalaria",
     description: "Plataforma integral para gestión de pacientes, citas y historiales médicos.",
     image: "/hospital-management-dashboard.png",
@@ -30,20 +58,6 @@ const projects = [
     image: "/online-learning-platform.png",
     tags: ["Vue.js", "Laravel", "MySQL"],
     category: "Educación",
-  },
-  {
-    title: "Sistema de Logística",
-    description: "Software para gestión de flotas, rutas y seguimiento en tiempo real.",
-    image: "/logistics-tracking-system-map.jpg",
-    tags: ["Angular", "Python", "Maps API"],
-    category: "Logística",
-  },
-  {
-    title: "CRM Empresarial",
-    description: "Sistema de gestión de relaciones con clientes y automatización de ventas.",
-    image: "/crm-dashboard-analytics.jpg",
-    tags: ["React", "Django", "Redis"],
-    category: "Empresarial",
   },
 ]
 
