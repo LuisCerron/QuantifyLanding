@@ -4,18 +4,20 @@ import { ExternalLink } from "lucide-react"
 
 const projects = [
   {
-    title: "Sistema de la Botica Said",
+    title: "Sistema para boticas",
     description: "Software para gestión de ventas, inventario y reportes.",
     image: "/boticaSaid.jpeg",
     tags: ["React", "Next.js", "Spring Boot"],
     category: "Salud",
+    url: "http://37.60.233.86:6969/",
   },
   {
-    title: "CRM Empresarial",
-    description: "Sistema de gestión de relaciones con clientes y automatización de ventas.",
-    image: "/crm-dashboard-analytics.jpg",
-    tags: ["React", "Django", "Redis"],
+    title: "Sistema de gestión de restaurantes",
+    description: "Sistema para restaurantes(pedidos,caja,reportes,boletas,etc).",
+    image: "/quantifyGourmet.png",
+    tags: ["React", "Next.js"],
     category: "Empresarial",
+    url: "http://37.60.233.86:4000/",
   },
   {
     title: "Panadería Delicia",
@@ -23,41 +25,24 @@ const projects = [
     image: "/PanaderiaDelicia.jpeg",
     tags: ["React", "Next.js", "Spring Boot"],
     category: "Postre",
+    url: "http://37.60.233.86:3000/",
   },
   {
     title: "Sistema de Planillas DREJ",
-    description: "Gestion de boleta personales admninistrativas de la DREJ.",
+    description: "Gestion de boleta personales admnistrativas de la DREJ.",
     image: "/PlanillasDrej.png",
     tags: ["Laravel", "Angular", "PostgreSQL"],
     category: "Empresarial",
+    url: "https://planillas.drej.edu.pe/login",
   },
-  {
-    title: "Sistema de Gestión Hospitalaria",
-    description: "Plataforma integral para gestión de pacientes, citas y historiales médicos.",
-    image: "/hospital-management-dashboard.png",
-    tags: ["React", "Node.js", "PostgreSQL"],
-    category: "Salud",
-  },
-  {
-    title: "E-commerce Multivendedor",
-    description: "Marketplace completo con gestión de inventario, pagos y logística.",
-    image: "/ecommerce-marketplace-interface.jpg",
-    tags: ["Next.js", "Stripe", "MongoDB"],
-    category: "Retail",
-  },
+
   {
     title: "App de Gestión Financiera",
     description: "Aplicación móvil para control de gastos y análisis financiero personal.",
     image: "/financial-management-mobile-app.jpg",
     tags: ["React Native", "Firebase", "Charts"],
     category: "Finanzas",
-  },
-  {
-    title: "Portal Educativo",
-    description: "Plataforma de e-learning con cursos, evaluaciones y seguimiento de progreso.",
-    image: "/online-learning-platform.png",
-    tags: ["Vue.js", "Laravel", "MySQL"],
-    category: "Educación",
+    url: "http://37.60.233.86:3000/",
   },
 ]
 
@@ -76,35 +61,43 @@ export function Portfolio() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <Card
+
+            <a
               key={index}
-              className="bg-card border-border overflow-hidden group hover:border-secondary transition-all duration-300"
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 right-4">
-                  <Badge className="bg-secondary text-secondary-foreground">{project.category}</Badge>
+              <Card
+                className="bg-card border-border overflow-hidden group hover:border-secondary transition-all duration-300 **cursor-pointer**" // Agregué cursor-pointer
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <Badge className="bg-secondary text-secondary-foreground">{project.category}</Badge>
+                  </div>
                 </div>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-card-foreground flex items-center justify-between">
-                  {project.title}
-                  <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                </h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <Badge key={tagIndex} variant="outline" className="border-border text-foreground">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-2 text-card-foreground flex items-center justify-between">
+                    {project.title}
+                    <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </h3>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <Badge key={tagIndex} variant="outline" className="border-border text-foreground">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </a>
           ))}
         </div>
       </div>
