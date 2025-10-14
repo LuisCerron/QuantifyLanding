@@ -5,11 +5,15 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
+import WhatsAppButton from "../components/whatsapp-button" 
 
 export const metadata: Metadata = {
   title: "Quantify - Desarrollo de Software a Medida",
   description: "Empresa de desarrollo de software especializada en soluciones tecnológicas personalizadas",
   generator: "v0.app",
+  icons: {
+    icon: '/quantiLogo.ico',
+  },
 }
 
 export default function RootLayout({
@@ -21,6 +25,7 @@ export default function RootLayout({
     <html lang="es" className="scroll-smooth">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        <WhatsAppButton />
         <Analytics />
       </body>
     </html>

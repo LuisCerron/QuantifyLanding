@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
+import Image from "next/image" 
 
 const projects = [
   {
@@ -35,7 +36,6 @@ const projects = [
     category: "Empresarial",
     url: "https://planillas.drej.edu.pe/login",
   },
-
   {
     title: "App de Gestión Financiera",
     description: "Aplicación móvil para control de gastos y análisis financiero personal.",
@@ -48,49 +48,90 @@ const projects = [
 
 export function Portfolio() {
   return (
-    <section id="portafolio" className="py-20 px-4 lg:px-8">
+    
+    <section id="portafolio" className="py-24 px-4 lg:px-8 bg-secondary">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestro <span className="text-secondary">Portafolio</span>
+        
+        <div className="text-center mb-16 animate-in fade-in slide-in-from-top-12 duration-500 ease-in-out">
+          
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+            Proyectos Recientes
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+            Nuestro <span className="text-primary">Portafolio</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Proyectos exitosos que demuestran nuestra experiencia y compromiso con la excelencia
+            Proyectos exitosos que demuestran nuestra experiencia y compromiso con la excelencia.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-
             <a
               key={index}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
+              // CAMBIO: 'group' y animación de entrada escalonada
+              className="block group animate-in fade-in slide-in-from-bottom-8 duration-500 ease-in-out"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
+              {/* CAMBIO: 'h-full' y 'flex-col' para tarjetas de altura uniforme */}
               <Card
-                className="bg-card border-border overflow-hidden group hover:border-secondary transition-all duration-300 **cursor-pointer**" // Agregué cursor-pointer
+                className="
+                  bg-card border-border overflow-hidden h-full flex flex-col
+                  transition-all duration-300
+                  group-hover:shadow-xl group-hover:-translate-y-1.5 /* Efecto lift */
+                "
               >
-                <div className="relative overflow-hidden">
-                  <img
+                {/* Contenedor de la imagen */}
+                <div className="relative overflow-hidden h-48 flex-shrink-0">
+                  {/* CAMBIO: Usando Next/Image para optimización */}
+                  <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute top-4 right-4">
-                    <Badge className="bg-secondary text-secondary-foreground">{project.category}</Badge>
+                    {/* CAMBIO: 'secondary' a 'primary' y sombra */}
+                    <Badge className="bg-primary text-primary-foreground shadow-lg">
+                      {project.category}
+                    </Badge>
                   </div>
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-card-foreground flex items-center justify-between">
-                    {project.title}
-                    <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                
+                {/* CAMBIO: 'flex-grow' y 'justify-between' para alinear tags al fondo */}
+                <CardContent className="p-6 flex-grow flex flex-col justify-between">
+                  {/* Contenido superior (título, descripción) */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-2 text-card-foreground flex items-center justify-between">
+                      {project.title}
+                      {/* CAMBIO: Micro-interacción de "lanzamiento" */}
+                      <ExternalLink 
+                        className="
+                          h-5 w-5 text-muted-foreground flex-shrink-0
+                          group-hover:text-primary 
+                          group-hover:translate-x-1 group-hover:-translate-y-1 
+                          transition-all duration-300
+                        " 
+                      />
+                    </h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+                      {project.description}
+                    </p>
+                  </div>
+                  
+                  {/* Contenido inferior (tags) */}
+                  <div className="flex flex-wrap gap-2 pt-4">
                     {project.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="outline" className="border-border text-foreground">
+                      // CAMBIO: Estilo de Badge más moderno
+                      <Badge 
+                        key={tagIndex} 
+                        variant="secondary"
+                        className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                      >
                         {tag}
                       </Badge>
                     ))}

@@ -30,6 +30,15 @@ module.exports = {
         primary: 'var(--primary)',
         // ... (Agrega todas las variables que uses como clases en tus archivos)
       },
+      keyframes: {
+        'throb': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)' }, // Se agranda un 10% en la mitad
+        },
+      },
+      animation: {
+        'throb': 'throb 2s ease-in-out infinite', // 2 segundos, suave, infinito
+      },
       // Si usas --radius, también debes mapear los bordes:
       borderRadius: {
         lg: `var(--radius)`,
@@ -38,5 +47,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animate"), // Asegúrate de tener este plugin
+  ],
 }
